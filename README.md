@@ -1,7 +1,3 @@
-Here is the full `README.md` for Luna AI:
-
----
-
 # Luna AI
 
 **Luna AI** is an open-source AI model developed by Luna OpenLabs, designed for text classification tasks. Utilizing the powerful BERT architecture, Luna AI efficiently and accurately classifies text into predefined categories. In addition, Luna AI now features an interactive chat interface, allowing you to easily test the model with real-time classification and conversation responses.
@@ -295,7 +291,3 @@ For questions, support, or feedback, you can reach us at:
 
 - **Email**: support@lunaopenlabs.com
 - **GitHub**: [Luna OpenLabs GitHub](https://github.com/LunaOpenLabs)
-
----
-
-Feel free to modify and extend this `README.md` as necessary!
