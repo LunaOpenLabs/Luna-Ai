@@ -239,7 +239,7 @@ To train the model, execute the following command:
 python training/train.py
 ```
 
-This command will load the dataset from `data/dataset.csv` and initiate the training process.
+This command will load the dataset from `data/data.csv` and initiate the training process.
 
 ### Chat Interface Usage
 
@@ -261,17 +261,6 @@ python save_model.py
 
 This will save the model and its tokenizer in the `luna_ai_model` directory.
 
-### Testing the Model
-
-
-
-You can test the model by providing new data through the chat interface or by using:
-
-```bash
-python test_model.py --text "Your test text here."
-```
-
----
 
 ## Contributing
 
