@@ -63,10 +63,17 @@ def chat():
         # Add more cases for other logics here
 
         else:
-            prompt = "chat: " + user_message  # Use "chat:" for conversational replies
+            # Use more specific prompt for conversation to avoid "chat: chat" duplication
+            prompt = f"conversation: {user_message}"  # Improved prompt for conversational replies
+
+            # Tokenize and generate response using T5
             inputs = t5_tokenizer.encode(prompt, return_tensors="pt", max_length=512, truncation=True)
-            generated = t5_model.generate(inputs, max_length=150, num_beams=5, early_stopping=True)
+            generated = t5_model.generate(inputs, max_length=150, num_beams=5, early_stopping=True, 
+                                         temperature=0.7, top_p=0.9, do_sample=True)  # Adjusting temperature and top-p for better diversity
             response = t5_tokenizer.decode(generated[0], skip_special_tokens=True)
+
+            # Clean up the response (strip extra tokens like "chat:" if present)
+            response = response.replace("chat:", "").strip()
 
         return jsonify({"response": response})
 
