@@ -2677,3 +2677,6 @@ text,label
 "Completely let down by the product.",0
 "Highly effective for my needs!",1
 "Very low standards for quality.",0
+I love this ai,classification of 1s
+I hate this platform,Classification sample of 0s
+Hello,you can add the label to your data if you need 

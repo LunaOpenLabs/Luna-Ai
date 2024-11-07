@@ -1,88 +1,89 @@
-# training/train.py
-import os
-import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 import torch
-import torch.nn as nn
-from torch.utils.data import DataLoader, Dataset
-from transformers import BertTokenizer, AdamW
-from model.luna_model import LunaAI
-from sklearn.metrics import accuracy_score, precision_recall_fscore_support
+from torch.utils.data import Dataset, DataLoader
+from transformers import BertTokenizer, BertForSequenceClassification
+from tqdm import tqdm
+import pandas as pd
+import torch.optim as optim
+from torch.nn import functional as F
+from torch.optim import AdamW
+from transformers import get_linear_schedule_with_warmup
 
+# Custom Dataset class for text data
 class TextDataset(Dataset):
-    def __init__(self, csv_file, tokenizer, max_length=128):
+    def __init__(self, csv_file, tokenizer, max_length=512):
         self.data = pd.read_csv(csv_file)
         self.tokenizer = tokenizer
         self.max_length = max_length
-
+        
+        # Encode labels as integers
+        self.label_encoder = LabelEncoder()
+        self.labels = self.label_encoder.fit_transform(self.data['label'])
+        
     def __len__(self):
         return len(self.data)
-
+    
     def __getitem__(self, idx):
-        text = self.data.iloc[idx, 0]
-        label = self.data.iloc[idx, 1]
+        text = str(self.data.iloc[idx]['text'])
+        label = self.labels[idx]
+        
         encoding = self.tokenizer.encode_plus(
             text,
             add_special_tokens=True,
-            return_tensors='pt',
-            padding='max_length',
             max_length=self.max_length,
+            padding='max_length',
             truncation=True,
+            return_tensors='pt'
         )
+        
         return {
             'input_ids': encoding['input_ids'].flatten(),
             'attention_mask': encoding['attention_mask'].flatten(),
-            'labels': torch.tensor(label, dtype=torch.long),
+            'labels': torch.tensor(label, dtype=torch.long)  # Labels should be integers, not strings
         }
 
-def evaluate_model(model, dataloader):
-    model.eval()
-    predictions, true_labels = [], []
-    with torch.no_grad():
-        for batch in dataloader:
-            outputs = model(batch['input_ids'], batch['attention_mask'])
-            _, preds = torch.max(outputs, dim=1)
-            predictions.extend(preds.cpu().numpy())
-            true_labels.extend(batch['labels'].cpu().numpy())
+# Load tokenizer and model
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)  # Adjust num_labels as needed
 
-    accuracy = accuracy_score(true_labels, predictions)
-    precision, recall, f1, _ = precision_recall_fscore_support(true_labels, predictions, average='weighted')
-    return accuracy, precision, recall, f1
+# Load dataset
+dataset = TextDataset('data/data.csv', tokenizer)
+train_dataloader = DataLoader(dataset, batch_size=16, shuffle=True)
 
-def save_checkpoint(epoch, model, optimizer, loss, path="./checkpoints"):
-    os.makedirs(path, exist_ok=True)
-    torch.save({
-        'epoch': epoch,
-        'model_state_dict': model.state_dict(),
-        'optimizer_state_dict': optimizer.state_dict(),
-        'loss': loss,
-    }, os.path.join(path, f"checkpoint_epoch_{epoch}.pth"))
+# Set up optimizer and scheduler
+optimizer = AdamW(model.parameters(), lr=1e-5)
+total_steps = len(train_dataloader) * 4  # 4 epochs
+scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=0, num_training_steps=total_steps)
 
-def train_model(model, dataset, epochs=3, batch_size=16, learning_rate=5e-5):
-    dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
-    optimizer = AdamW(model.parameters(), lr=learning_rate)
+# Training loop
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.to(device)
+
+for epoch in range(4):  # Adjust number of epochs as needed
     model.train()
+    loop = tqdm(train_dataloader, desc=f'Epoch {epoch+1}')
     
-    for epoch in range(epochs):
-        for batch in dataloader:
-            input_ids = batch['input_ids']
-            attention_mask = batch['attention_mask']
-            labels = batch['labels']
+    for batch in loop:
+        batch = {k: v.to(device) for k, v in batch.items()}  # Move batch to device
+        optimizer.zero_grad()
 
-            optimizer.zero_grad()
-            outputs = model(input_ids, attention_mask)
-            loss = nn.CrossEntropyLoss()(outputs, labels)
-            loss.backward()
-            optimizer.step()
-            print(f'Epoch {epoch}, Loss: {loss.item()}')
+        # Forward pass
+        outputs = model(
+            input_ids=batch['input_ids'],
+            attention_mask=batch['attention_mask'],
+            labels=batch['labels']
+        )
+        
+        loss = outputs.loss
+        logits = outputs.logits
 
-        save_checkpoint(epoch, model, optimizer, loss.item())
+        # Backward pass
+        loss.backward()
+        optimizer.step()
+        scheduler.step()
 
-        # Optional: Evaluate the model at each epoch end
-        accuracy, precision, recall, f1 = evaluate_model(model, dataloader)
-        print(f'Epoch {epoch} - Accuracy: {accuracy}, Precision: {precision}, Recall: {recall}, F1 Score: {f1}')
+        loop.set_postfix(loss=loss.item())
 
-if __name__ == "__main__":
-    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-    dataset = TextDataset('data/dataset.csv', tokenizer)
-    model = LunaAI(num_classes=2)  # Adjust num_classes if necessary
-    train_model(model, dataset)
+# Save the model after training
+model.save_pretrained('model')
+tokenizer.save_pretrained('model')
