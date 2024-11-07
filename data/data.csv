@@ -2680,3 +2680,362 @@ text,label
 I love this ai,classification of 1s
 I hate this platform,Classification sample of 0s
 Hello,you can add the label to your data if you need 
+"The service was amazing, I will definitely return!",1
+"Absolutely terrible, I wouldn't recommend it to anyone.",0
+"I had a great time shopping here, the staff were so helpful!",1
+"Very disappointed, the product didn't meet my expectations.",0
+"Best purchase I've made in a long time, I'm so happy!",1
+"Not worth the money, I regret buying it.",0
+"Customer support was fantastic, they solved my issue quickly.",1
+"The product arrived damaged and it took forever to get a refund.",0
+"Such a smooth experience, everything was perfect.",1
+"Terrible quality, it broke after just one use.",0
+"Excellent value for the price, highly recommend it.",1
+"Disastrous! The item was defective and they refused to replace it.",0
+"Really impressed with the quality and speed of delivery!",1
+"Never again, I had to wait for weeks to receive my order.",0
+"I'm so pleased with my purchase, it exceeded all my expectations!",1
+"Completely unsatisfied, the product didn't work as advertised.",0
+"The staff were incredibly friendly, I felt well taken care of.",1
+"Absolute nightmare, I will never shop here again.",0
+"Fantastic experience, everything was easy and straightforward!",1
+"Not happy with the product, it didn't work properly from the start.",0
+"Very pleased with the quality of the product, it's exactly what I needed!",1
+"Extremely dissatisfied with the purchase, it's a waste of money.",0
+"The delivery was super fast and the product was just as described.",1
+"Customer service was terrible, I couldn’t get any help.",0
+"Great experience overall, will buy again!",1
+"Totally disappointed, the product was nothing like the pictures.",0
+"Wonderful experience, the website was easy to navigate and checkout was quick.",1
+"Never again, the product stopped working after a few days.",0
+"Superb quality and fast shipping, I’m really impressed!",1
+"Awful, the product didn't fit as described and it was too small.",0
+"Love it! The product is perfect for what I was looking for.",1
+"The worst purchase I've ever made, regret it completely.",0
+"Excellent packaging and the item arrived in perfect condition.",1
+"Service was slow, and I didn’t get what I ordered.",0
+"Happy with my purchase, it's exactly as promised!",1
+"Extremely unhappy, I received the wrong product.",0
+"Couldn’t be more satisfied, the product works flawlessly.",1
+"The quality was much lower than expected, very disappointing.",0
+"I’m so glad I bought this, it’s worth every penny!",1
+"Terrible product, didn’t function at all.",0
+"I absolutely love this! Worth every cent!",1
+"Very poor quality, don’t waste your money.",0
+"The customer support was very helpful and responsive.",1
+"Product arrived damaged, very disappointed.",0
+"Shipping was quick and the product exceeded my expectations.",1
+"This was a terrible purchase, not what I expected.",0
+"Great quality, I would definitely recommend it.",1
+"Don't buy this product, it’s a scam.",0
+"Perfect! Exactly what I was looking for!",1
+"Worst experience, the product broke after a week.",0
+"Product looks just like the pictures, I’m very happy with it.",1
+"The service was horrible, I will never shop here again.",0
+"Excellent experience from start to finish!",1
+"Regret this purchase, I wish I could return it.",0
+"The product works great, I’m very satisfied.",1
+"Shipping was way too slow and the item arrived late.",0
+"Perfect fit, high quality, would purchase again.",1
+"Not worth the money, really bad quality.",0
+"Fantastic! I would buy this again without a doubt.",1
+"Received a defective item, very upset.",0
+"Super happy with my purchase, highly recommend!",1
+"Very bad experience, the product is not at all as described.",0
+"Love the product, works like a charm!",1
+"Not impressed, definitely expected more.",0
+"Good quality and fast delivery, would buy again.",1
+"Terrible, it doesn’t even work properly.",0
+"Best purchase ever, I’m in love with it!",1
+"Completely disappointing, didn’t work as expected.",0
+"Very impressed with the product, will buy again.",1
+"Extremely unhappy, the product was a complete letdown.",0
+"Great price for such a good product, I’m very satisfied.",1
+"Would not recommend, product arrived damaged.",0
+"Fantastic quality, exceeded all my expectations.",1
+"Service was terrible, they didn’t respond to my messages.",0
+"Delighted with this, it’s exactly what I needed!",1
+"Disastrous, I regret buying this.",0
+"I’m so happy with my purchase, highly recommend!",1
+"Really poor quality, don’t waste your money.",0
+"Absolutely worth the price, will buy more!",1
+"Never buying from here again, the product is awful.",0
+"Excellent item, just what I needed.",1
+"Awful customer service, they didn’t help me at all.",0
+"Love it, would recommend to anyone!",1
+"Totally dissatisfied, the product doesn’t work.",0
+"Exceeded my expectations, will definitely buy again.",1
+"Do not buy, the product is terrible.",0
+"Perfect product, arrived on time and in good condition.",1
+"Very unhappy with this purchase, would like a refund.",0
+"Great purchase, just as described.",1
+"Extremely disappointed, the quality was so low.",0
+"Best quality I’ve seen, totally worth it.",1
+"Very poor customer service, they were rude and unhelpful.",0
+"Very impressed with this purchase, would recommend.",1
+"Didn’t live up to expectations, very unsatisfied.",0
+"Totally worth the money, I’m very happy with it.",1
+"Product doesn’t work as advertised, very upset.",0
+"Love this, it’s exactly as described!",1
+"Not happy with this at all, I expected better quality.",0
+"Great product, fast delivery, highly recommend.",1
+"Terrible, I got the wrong item and it was damaged.",0
+"Superb quality, will definitely buy again!",1
+"Very poor experience, I’m extremely disappointed.",0
+"Best item ever, exceeded all expectations!",1
+"Completely let down by this purchase, won’t buy again.",0
+"Fantastic product, works perfectly.",1
+"Extremely dissatisfied, would not recommend to anyone.",0
+"Love the product, it works just as promised!",1
+"Totally unsatisfied, it’s nothing like the pictures.",0
+"Very impressed, the quality is amazing.",1
+"Disappointed with the quality, won’t buy again.",0
+"Perfect purchase, will shop here again.",1
+"Shipping was slow and product didn’t meet my expectations.",0
+"Great quality and very easy to use.",1
+"Not at all happy, the item broke after one use.",0
+"Best purchase I’ve made in a long time!",1
+"Would never buy from here again, terrible experience.",0
+"Very good quality, I highly recommend it.",1
+"Very poor quality and the customer service was unhelpful.",0
+"Exceeded my expectations, will definitely purchase again.",1
+"Really disappointed, didn’t live up to the hype.",0
+"Fantastic product, I’m very happy with it.",1
+"Item didn’t work, very frustrated with the purchase.",0
+"Absolutely love it, highly recommended!",1
+"Very bad quality, product is falling apart already.",0
+"Product is amazing, just what I needed!",1
+"Totally disappointed, it didn’t work as promised.",0
+"Extremely happy, great purchase!",1
+"Not worth the price at all, very dissatisfied.",0
+"Best product I’ve bought in years!",1
+"Terrible, the item didn’t work out of the box.",0
+"Great service, the product arrived in perfect condition.",1
+"Awful purchase, very unhappy.",0
+"Love it! Works great and exactly what I was looking for.",1
+"Very poor quality and late delivery.",0
+"Best purchase ever, will buy again!",1
+"Product is not functional, very dissatisfied.",0
+"Completely satisfied, would definitely recommend.",1
+"Very bad quality, it broke after a few uses.",0
+"Awesome product, really happy with it.",1
+"Terrible, didn’t meet my expectations at all.",0
+"Great quality and fast shipping, love it!",1
+"Product arrived broken and customer service didn’t help.",0
+"Perfect for my needs, highly recommend it.",1
+"Very bad purchase, I want a refund.",0
+"Product works great, I am extremely happy with it!",1
+"Not worth it, total waste of money.",0
+"Exceeded all my expectations, fantastic quality.",1
+"Very unhappy with this purchase, would not buy again.",0
+"Perfect fit, works like a charm, I love it!",1
+"Awful, didn’t meet my expectations at all.",0
+"Best purchase I’ve made in a long time, highly recommend!",1
+"Regret this purchase, the item is terrible.",0
+"This is a fantastic item! Will definitely buy again.",1
+"Very disappointed, it didn’t live up to the hype.",0
+"Good quality, but took longer to arrive than expected.",1
+"Completely dissatisfied, not worth the money.",0
+"Product works perfectly and looks great, highly recommend!",1
+"Terrible experience, wouldn’t recommend this to anyone.",0
+"Very pleased with my purchase, great quality.",1
+"Item was damaged on arrival, not happy at all.",0
+"Exceeded expectations, totally love it!",1
+"Product didn’t work properly, waste of money.",0
+"Absolutely love it! Worth every penny.",1
+"Received the wrong item, completely dissatisfied.",0
+"Great purchase, high quality, will shop again.",1
+"Very unhappy with this product, it didn’t work as expected.",0
+"Super impressed, totally recommend this to everyone!",1
+"Product is broken, very disappointed.",0
+"Fantastic service, quick shipping, and high quality.",1
+"Complete waste of money, do not buy.",0
+"Love this! It’s even better than I expected.",1
+"Item was late and damaged, not happy.",0
+"Perfect in every way, highly recommend!",1
+"Very poor quality, it broke after one use.",0
+"Great quality, exceeded all expectations.",1
+"Not happy at all, very poor quality.",0
+"Perfect fit, love it! Worth the money.",1
+"Very dissatisfied, the product didn’t meet my expectations.",0
+"Excellent product, fast shipping, would buy again.",1
+"Terrible purchase, very disappointed.",0
+"Superb quality and service, will definitely buy again.",1
+"Very poor customer service, not helpful at all.",0
+"Love this item, works great and arrived quickly!",1
+"Complete disappointment, it doesn’t work as promised.",0
+"Exactly what I needed, very satisfied with the purchase.",1
+"Not worth the price, very disappointing.",0
+"Excellent quality, arrived early, will definitely buy again.",1
+"Product didn’t meet expectations, very dissatisfied.",0
+"Love it! Exactly what I was looking for.",1
+"Awful quality, broke after one use.",0
+"Great experience, very happy with the product.",1
+"Extremely disappointed, didn’t live up to the description.",0
+"Perfect product, exactly as advertised!",1
+"Do not buy, it’s a total waste of money.",0
+"Very pleased with this purchase, highly recommend!",1
+"Product was completely different from what was shown.",0
+"Great value for the money, very satisfied.",1
+"Product didn’t work as expected, very unhappy.",0
+"Super happy with this purchase, would buy again.",1
+"Really bad, won’t be purchasing here again.",0
+"Fantastic quality and easy to use, very happy.",1
+"Extremely poor experience, very dissatisfied.",0
+"Best purchase I’ve made, definitely recommend it!",1
+"Received a faulty product, very unhappy.",0
+"Love it! Very happy with my purchase.",1
+"Very poor quality, won’t buy from here again.",0
+"Perfect item, works exactly as described.",1
+"Shipping was delayed and the product was damaged.",0
+"Absolutely love this! It’s perfect.",1
+"Very dissatisfied, it didn’t work as advertised.",0
+"Great quality, would highly recommend it.",1
+"Very poor product, completely disappointed.",0
+"Exceeded expectations, great value for money.",1
+"Very unhappy, this product broke within a week.",0
+"Best purchase I’ve made, I love it!",1
+"Terrible customer service and poor product quality.",0
+"Fantastic product, does exactly what it says.",1
+"Disappointed with the quality, not what I expected.",0
+"Perfect! I love this product.",1
+"Not happy with the item, would not recommend.",0
+"Superb quality and very well made, highly recommend.",1
+"Item arrived broken, very upset with the experience.",0
+"Very happy with the purchase, excellent quality.",1
+"Did not meet expectations, would not purchase again.",0
+"Absolutely love it, great value for money!",1
+"Not satisfied at all, the item broke quickly.",0
+"Great service, the product works as expected.",1
+"Very poor, didn’t work out of the box.",0
+"Excellent product, arrived on time and in perfect condition.",1
+"Item was not as described, very disappointed.",0
+"Superb purchase, couldn’t be happier.",1
+"Total waste of money, do not buy.",0
+"Exactly what I needed, love it!",1
+"Very poor quality, very dissatisfied.",0
+"Love it, very happy with the product!",1
+"Very bad quality, I want a refund.",0
+"Excellent purchase, highly recommend it!",1
+"Product arrived damaged and doesn’t work properly.",0
+"Absolutely perfect, exceeded my expectations!",1
+"Disappointing product, won’t buy again.",0
+"Best quality for the price, I’m very happy.",1
+"Terrible experience, won’t buy again.",0
+"Great quality, I’m very satisfied with it.",1
+"Extremely dissatisfied, the product was faulty.",0
+"Love this product, I will definitely buy again!",1
+"Completely dissatisfied with the item, very poor quality.",0
+"Fantastic purchase, worth every penny.",1
+"Awful, broke after a few uses.",0
+"Perfect! Great quality, I highly recommend it.",1
+"Not worth the price, very poor quality.",0
+"Superb quality, I’m very impressed!",1
+"Really unhappy with this product, wouldn’t recommend.",0
+"Best item I’ve bought this year, highly recommend.",1
+"Disappointed, the product doesn’t work at all.",0
+"Great experience, very happy with the purchase.",1
+"Very bad quality, I would not buy again.",0
+"Exceeded all expectations, love it!",1
+"Terrible quality, product arrived broken.",0
+Here are 100 more lines of sample data:
+
+```
+"Totally worth the price, I love it!",1
+"Extremely poor, didn’t work as expected.",0
+"Perfect for what I needed, highly recommend.",1
+"Product didn’t match the description, very disappointed.",0
+"Very happy with this purchase, great quality.",1
+"Awful experience, won’t buy from here again.",0
+"Fantastic, exactly what I was looking for!",1
+"Very poor quality, broke within days.",0
+"Superb, works great and easy to use.",1
+"Completely useless, do not buy.",0
+"Totally love it, exceeded my expectations!",1
+"Very unhappy with the product, poor quality.",0
+"Excellent purchase, highly satisfied.",1
+"Disappointing, didn’t work as advertised.",0
+"Really great, would definitely buy again.",1
+"Extremely disappointed, not what I expected.",0
+"Excellent quality, arrived quickly and works perfectly.",1
+"Do not waste your money, horrible quality.",0
+"Best purchase I’ve made in a long time!",1
+"Very bad quality, very dissatisfied.",0
+"Great product, would highly recommend!",1
+"Product was faulty and didn’t work.",0
+"Perfect item, does exactly what I wanted.",1
+"Very disappointed, it broke within a week.",0
+"Love this, works as expected!",1
+"Would not recommend this product, very poor quality.",0
+"Great product for the price, very satisfied.",1
+"Extremely dissatisfied, returned the item.",0
+"Super quality, would buy again.",1
+"Very unhappy with this product, not worth the money.",0
+"Exceeded my expectations, great value for money!",1
+"Completely disappointed, I want a refund.",0
+"Very satisfied with my purchase, great quality.",1
+"Terrible quality, didn’t work as expected.",0
+"Perfect! Arrived on time and works great.",1
+"Product didn’t meet my expectations, very disappointed.",0
+"Excellent product, exactly as described.",1
+"Item was damaged, very upset with the purchase.",0
+"Very happy with the product, highly recommend.",1
+"Awful experience, would not purchase again.",0
+"Exactly what I needed, perfect!",1
+"Very poor, it didn’t work properly.",0
+"Great quality, highly recommend this item.",1
+"Product was broken on arrival, very dissatisfied.",0
+"Love it, great product and fast shipping!",1
+"Totally regret buying this, poor quality.",0
+"Perfect fit, works great, will buy again!",1
+"Item didn’t match the description, very disappointed.",0
+"Excellent service, great product!",1
+"Very bad quality, wouldn’t recommend.",0
+"Totally love this product, exceeded my expectations!",1
+"Very poor product, do not buy.",0
+"Great value, will definitely buy again.",1
+"Not what I expected, very unhappy.",0
+"Love this! It works great, highly recommend.",1
+"Product didn’t arrive as promised, very upset.",0
+"Best product I’ve ever purchased!",1
+"Very poor quality, not worth the price.",0
+"Superb quality, I’m very happy with it!",1
+"Very disappointed, didn’t work as advertised.",0
+"Fantastic! Exactly what I was looking for.",1
+"Total waste of money, do not buy.",0
+"Love it! Will buy again.",1
+"Product arrived broken, very upset.",0
+"Highly recommend this, great quality.",1
+"Very disappointed with this product, it’s not what I thought.",0
+"Fantastic product, works like a charm.",1
+"Very poor quality, didn’t meet expectations.",0
+"Great quality, will definitely recommend.",1
+"Product was a letdown, very unhappy.",0
+"Perfect product, does exactly as promised.",1
+"Not worth the money, very poor quality.",0
+"Exceeded all my expectations, very happy.",1
+"Awful, would not recommend.",0
+"Great product, highly recommended!",1
+"Very unhappy, the product didn’t work at all.",0
+"Love this, works great and looks good!",1
+"Totally dissatisfied, didn’t work as expected.",0
+"Great product, I will buy again.",1
+"Very poor customer service, would not buy again.",0
+"Best purchase I’ve made, highly recommend.",1
+"Very disappointed, the product is not durable.",0
+"Perfect item, arrived on time and works well.",1
+"Very poor quality, waste of money.",0
+"Fantastic, exactly what I wanted.",1
+"Product didn’t meet expectations, very poor.",0
+"Excellent product, does everything I needed.",1
+"Very dissatisfied, the product didn’t work.",0
+"Totally recommend this product, it’s great!",1
+"Very unhappy with the product, it’s broken.",0
+"Love it! Works perfectly as expected.",1
+"Disappointing, very poor quality.",0
+"Great product, worth the money.",1
+"Really unhappy, broke after a few uses.",0
+"Exactly what I needed, highly recommend.",1
+"Product didn’t work as promised, very upset.",0
+"Fantastic, very happy with my purchase.",1
+"Product was defective, didn’t work at all.",0
