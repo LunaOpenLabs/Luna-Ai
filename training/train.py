@@ -1,89 +1,127 @@
-from sklearn.preprocessing import LabelEncoder
 import torch
-from torch.utils.data import Dataset, DataLoader
 from transformers import BertTokenizer, BertForSequenceClassification
-from tqdm import tqdm
+from torch.utils.data import Dataset, DataLoader
 import pandas as pd
-import torch.optim as optim
-from torch.nn import functional as F
-from torch.optim import AdamW
-from transformers import get_linear_schedule_with_warmup
+from sklearn.preprocessing import LabelEncoder
+from tqdm import tqdm
+import logging
 
-# Custom Dataset class for text data
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+
 class TextDataset(Dataset):
     def __init__(self, csv_file, tokenizer, max_length=512):
+        """
+        Custom Dataset class for reading and tokenizing the CSV file data.
+        Args:
+            csv_file (str): Path to the CSV file with 'text' and 'label' columns.
+            tokenizer (BertTokenizer): Hugging Face tokenizer for text tokenization.
+            max_length (int): Maximum token length for sequences.
+        """
         self.data = pd.read_csv(csv_file)
+
+        # Ensure labels are integers, even if they are strings
+        if self.data['label'].dtype == 'O':  # Object type (usually strings)
+            logging.info("Label column contains strings. Encoding to integers...")
+            encoder = LabelEncoder()
+            self.data['label'] = encoder.fit_transform(self.data['label'])
+
         self.tokenizer = tokenizer
         self.max_length = max_length
-        
-        # Encode labels as integers
-        self.label_encoder = LabelEncoder()
-        self.labels = self.label_encoder.fit_transform(self.data['label'])
-        
+
     def __len__(self):
         return len(self.data)
-    
+
     def __getitem__(self, idx):
-        text = str(self.data.iloc[idx]['text'])
-        label = self.labels[idx]
-        
-        encoding = self.tokenizer.encode_plus(
+        # Get the text and label
+        text = self.data.iloc[idx]['text']
+        label = self.data.iloc[idx]['label']
+
+        # Tokenize the text and convert it to the format required by BERT
+        encoding = self.tokenizer(
             text,
-            add_special_tokens=True,
-            max_length=self.max_length,
-            padding='max_length',
             truncation=True,
+            padding='max_length',
+            max_length=self.max_length,
             return_tensors='pt'
         )
-        
+
+        # Return the tokenized input and label
         return {
             'input_ids': encoding['input_ids'].flatten(),
             'attention_mask': encoding['attention_mask'].flatten(),
-            'labels': torch.tensor(label, dtype=torch.long)  # Labels should be integers, not strings
+            'labels': torch.tensor(label, dtype=torch.long)  # Ensure label is a long tensor
         }
 
-# Load tokenizer and model
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)  # Adjust num_labels as needed
+def train():
+    # Load the tokenizer from Hugging Face
+    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
-# Load dataset
-dataset = TextDataset('data/data.csv', tokenizer)
-train_dataloader = DataLoader(dataset, batch_size=16, shuffle=True)
+    # Load the dataset
+    logging.info("Loading the dataset...")
+    try:
+        dataset = TextDataset('data/data.csv', tokenizer)
+    except FileNotFoundError:
+        logging.error("The file 'data/data.csv' was not found.")
+        return
 
-# Set up optimizer and scheduler
-optimizer = AdamW(model.parameters(), lr=1e-5)
-total_steps = len(train_dataloader) * 4  # 4 epochs
-scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=0, num_training_steps=total_steps)
+    # Create DataLoader for training
+    train_dataloader = DataLoader(dataset, batch_size=8, shuffle=True)  # Batch size reduced to 8
 
-# Training loop
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model.to(device)
+    # Load BERT model for sequence classification
+    model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
 
-for epoch in range(4):  # Adjust number of epochs as needed
-    model.train()
-    loop = tqdm(train_dataloader, desc=f'Epoch {epoch+1}')
+    # Define optimizer
+    optimizer = torch.optim.Adam(model.parameters(), lr=1e-5)
+
+    # Move model to GPU if available
+    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+    model.to(device)
+
+    # Training loop
+    epochs = 3
+    logging.info(f"Starting training for {epochs} epochs...")
     
-    for batch in loop:
-        batch = {k: v.to(device) for k, v in batch.items()}  # Move batch to device
-        optimizer.zero_grad()
+    for epoch in range(epochs):
+        model.train()
+        running_loss = 0.0
 
-        # Forward pass
-        outputs = model(
-            input_ids=batch['input_ids'],
-            attention_mask=batch['attention_mask'],
-            labels=batch['labels']
-        )
-        
-        loss = outputs.loss
-        logits = outputs.logits
+        # Create progress bar using tqdm
+        loop = tqdm(train_dataloader, desc=f"Epoch {epoch + 1}/{epochs}", unit="batch")
 
-        # Backward pass
-        loss.backward()
-        optimizer.step()
-        scheduler.step()
+        for batch in loop:
+            # Move batch to GPU if available
+            input_ids = batch['input_ids'].to(device)
+            attention_mask = batch['attention_mask'].to(device)
+            labels = batch['labels'].to(device)
 
-        loop.set_postfix(loss=loss.item())
+            # Zero the gradients
+            optimizer.zero_grad()
 
-# Save the model after training
-model.save_pretrained('model')
-tokenizer.save_pretrained('model')
+            # Forward pass
+            outputs = model(input_ids, attention_mask=attention_mask, labels=labels)
+            loss = outputs.loss
+            running_loss += loss.item()
+
+            # Backward pass and optimization
+            loss.backward()
+            optimizer.step()
+
+            # Update progress bar
+            loop.set_postfix(loss=loss.item())
+
+        # Logging the average loss after each epoch
+        avg_loss = running_loss / len(train_dataloader)
+        logging.info(f"Epoch {epoch + 1}/{epochs} - Loss: {avg_loss:.4f}")
+
+    logging.info("Training completed successfully.")
+
+    # Save the trained model
+    logging.info("Saving the trained model...")
+    model.save_pretrained('luna_model')
+    tokenizer.save_pretrained('luna_model')
+
+    logging.info("Model saved successfully.")
+
+if __name__ == "__main__":
+    train()
