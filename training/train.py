@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, Dataset
 from transformers import BertTokenizer, AdamW
-from ..model.luna_model import LunaAI
+from model.luna_model import LunaAI
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 
 class TextDataset(Dataset):
