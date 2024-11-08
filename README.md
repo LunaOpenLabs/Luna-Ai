@@ -278,5 +278,5 @@ Luna AI is released under the MIT License. See the [LICENSE](LICENSE) file for m
 
 For questions, support, or feedback, you can reach us at:
 
-- **Email**: support@lunaopenlabs.com
+- **Email**: lunaopenlabs@outlook.com
 - **GitHub**: [Luna OpenLabs GitHub](https://github.com/LunaOpenLabs)
